@@ -6,7 +6,7 @@ export default async function Home() {
         <div className="input border-base-300 border">https://daisyui.com</div>
       </div>
       <div className="border-base-300 flex justify-center border-t px-4 py-16">
-        Hello! This is test from DaisyUI.
+        Hello! This is test from DaisyUI!
       </div>
     </div>
   );
