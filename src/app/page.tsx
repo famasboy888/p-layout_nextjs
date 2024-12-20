@@ -1,8 +1,13 @@
 export default async function Home() {
   return (
-    //Create hello world title
-    <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold">Hello World</h1>
+    //Test DaisyUI
+    <div className="mockup-browser border-base-300 border">
+      <div className="mockup-browser-toolbar">
+        <div className="input border-base-300 border">https://daisyui.com</div>
+      </div>
+      <div className="border-base-300 flex justify-center border-t px-4 py-16">
+        Hello! This is test from DaisyUI.
+      </div>
     </div>
   );
 }
