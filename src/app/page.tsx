@@ -4,6 +4,7 @@ export default async function Home() {
   return (
     //Test DaisyUI
     <div>
+      <LandingPage />
     </div>
   );
 }
