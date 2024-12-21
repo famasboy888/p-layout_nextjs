@@ -13,7 +13,7 @@ export default function Header() {
           <div className="navbar-end">
             <div className="flex flex-row items-center gap-2">
               <Link
-                href="/signup"
+                href="/register"
                 className="bg-primary-gradient hover:border-purple-900 hover:border-1 text-white btn border-base-100"
               >
                 Sign Up
