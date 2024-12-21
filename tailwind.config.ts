@@ -8,8 +8,8 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#8B008B", // Main primary color (Reddish Purple)
-          dark: "#4B0082", // Darker shade for gradient
+          DEFAULT: "7C00FF", // Main primary color (Reddish Purple)
+          dark: "#CC13CC", // Darker shade for gradient
         },
         secondary: "#D3D3D3", // Light Grey for secondary elements
         accent: "#FFA500", // Bright Orange for accents
@@ -30,8 +30,8 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#8B008B",
-          "primary-dark": "#4B0082",
+          primary: "#7C00FF",
+          "primary-dark": "#CC13CC",
           secondary: "#D3D3D3",
           accent: "#FFA500",
           neutral: "#333333",
