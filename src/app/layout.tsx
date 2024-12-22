@@ -1,4 +1,4 @@
-import "~/styles/globals.css";
+import "../styles/globals.css";
 import { type Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Header from "~/app/components/header/Header";
@@ -22,9 +22,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${poppins.variable} font-sans`}>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col">
         <Header />
-        <main className="container mx-auto mt-28 mb-10">{children}</main>
+        <main className="container mx-auto mb-10 mt-28">{children}</main>
         <Footer />
       </body>
     </html>
