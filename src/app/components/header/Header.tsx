@@ -1,6 +1,10 @@
+import { auth } from "auth";
 import Link from "next/link";
+import GoogleSignOutButton from "./components/GoogleSignoutButton";
 
-export default function Header() {
+export default async function Header() {
+  const session = await auth();
+
   return (
     <header>
       <nav>
@@ -11,17 +15,21 @@ export default function Header() {
             </Link>
           </div>
           <div className="navbar-end">
-            <div className="flex flex-row items-center gap-2">
-              <Link
-                href="/register"
-                className="bg-primary-gradient hover:border-purple-900 hover:border-1 text-white btn border-base-100"
-              >
-                Sign Up
-              </Link>
-              <Link href="/login" className="btn border-gray-200 bg-base-100">
-                Log In
-              </Link>
-            </div>
+            {!session ? (
+              <div className="flex flex-row items-center gap-2">
+                <Link
+                  href="/register"
+                  className="hover:border-1 btn border-base-100 bg-primary-gradient text-white hover:border-purple-900"
+                >
+                  Sign Up
+                </Link>
+                <Link href="/login" className="btn border-gray-200 bg-base-100">
+                  Log In
+                </Link>
+              </div>
+            ) : (
+              <GoogleSignOutButton />
+            )}
           </div>
         </div>
       </nav>
