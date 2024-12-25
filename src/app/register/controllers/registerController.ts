@@ -6,5 +6,5 @@ export const handleGoogleSignIn = async () => {
 };
 
 export const handleGoogleSignOut = async () => {
-  await signOut();
+  await signOut({ redirectTo: "/login" });
 };
