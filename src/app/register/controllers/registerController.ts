@@ -1,5 +1,5 @@
 "use server";
-import { signIn, signOut } from "~/auth";
+import { signIn, signOut } from "auth";
 
 export const handleGoogleSignIn = async () => {
   await signIn("google");
