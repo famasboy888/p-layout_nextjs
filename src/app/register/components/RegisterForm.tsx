@@ -1,4 +1,4 @@
-import { auth } from "~/auth";
+import { auth } from "auth";
 import GoogleSigninButton from "./GoogleSigninButton";
 import { redirect } from "next/navigation";
 
