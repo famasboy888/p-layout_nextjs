@@ -1,11 +1,9 @@
-import { auth } from "auth";
+import { checkAuthorizationLoginRegisterRoute } from "~/utils/checkAuthorization";
 import GoogleSigninButton from "../register/components/GoogleSigninButton";
-import { redirect } from "next/navigation";
-
 export default async function page() {
-  const session = await auth();
-  console.log("Session:", session);
-  if (session) redirect("/");
+  //Route protection
+  await checkAuthorizationLoginRegisterRoute();
+
   return (
     <div className="flex h-screen flex-col items-center bg-base-100">
       <div className="w-full max-w-md space-y-4 rounded bg-white p-8 shadow-md">
