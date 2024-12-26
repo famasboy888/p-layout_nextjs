@@ -1,12 +1,6 @@
-import { auth } from "auth";
 import GoogleSigninButton from "./GoogleSigninButton";
-import { redirect } from "next/navigation";
 
-export default async function RegisterForm() {
-  const session = await auth();
-  console.log("Session:", session);
-  if (session) redirect("/");
-
+export default function RegisterForm() {
   return (
     <div className="flex h-screen flex-col items-center bg-base-100">
       <div className="w-full max-w-md space-y-4 rounded bg-white p-8 shadow-md">
