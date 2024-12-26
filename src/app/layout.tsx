@@ -21,7 +21,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${poppins.variable} font-sans`}>
+    <html lang="en" className={`${poppins.className} font-sans`}>
       <body className="flex min-h-screen flex-col">
         <Header />
         <main className="container mx-auto mb-10 mt-28">{children}</main>
