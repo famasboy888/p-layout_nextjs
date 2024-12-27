@@ -11,12 +11,18 @@ export interface IUser extends Document {
   _id: Types.ObjectId;
   email: string;
   name: string;
+  role?: string;
 }
 
 const UserSchema = new Schema(
   {
     email: { type: String, required: true, unique: true },
     name: { type: String, required: true },
+    role: {
+      type: String,
+      default: "client",
+      enum: ["admin", "client", "coordinator"],
+    },
   },
   { timestamps: true },
 );

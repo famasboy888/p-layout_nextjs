@@ -30,6 +30,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session }) {
       try {
+        await dbConnect();
         const dbUser = await User.findOne({
           email: session.user.email,
         });
