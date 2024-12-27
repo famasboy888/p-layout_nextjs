@@ -4,8 +4,8 @@ import User from "~/models/user.model";
 
 export const checkAuthorizationLoginRegisterRoute = async () => {
   const session = await auth();
-  if (!session) {
-    redirect("/login");
+  if (session) {
+    redirect("/");
   }
 
   return session;
