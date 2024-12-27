@@ -1,6 +1,6 @@
 import LandingPage from "~/app/components/landingPage/LandingPage";
 
-export default async function Home() {
+export default function Home() {
   return (
     //Test DaisyUI
     <LandingPage />
