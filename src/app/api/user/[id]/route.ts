@@ -4,12 +4,12 @@ import { Types } from "mongoose";
 
 export const GET = async (
   req: NextRequest,
-  context: { params: { id: string } },
+  context: { params: Promise<{ id: string }> },
 ) => {
-  const { params } = context;
+  const id = (await context.params).id;
 
   try {
-    const users = await getUserById(new Types.ObjectId(params.id));
+    const users = await getUserById(new Types.ObjectId(id));
     return new NextResponse(JSON.stringify(users), { status: 200 });
   } catch (error) {
     console.error(error);
