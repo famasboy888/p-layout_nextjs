@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import User from "~/models/user.model";
+import User, { type IUser } from "~/models/user.model";
 import dbConnect from "~/utils/db/db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -9,10 +9,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user, account }) {
       if (account?.provider === "google") {
         try {
-          await dbConnect();
+          const res = await fetch(
+            `${process.env.NEXTAUTH_URL}/api/user/email/${user.email}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            },
+          );
+
+          if (!res.ok) {
+            throw new Error("Failed to fetch user data");
+          }
 
           // Check if the user already exists
-          const existingUser = await User.findOne({ email: user.email });
+          const existingUser: IUser | null = (await res.json()) as IUser;
 
           if (!existingUser) {
             await User.create({
@@ -30,15 +42,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session }) {
       try {
-        await dbConnect();
-        const dbUser = await User.findOne({
-          email: session.user.email,
-        });
+        const res = await fetch(
+          `${process.env.NEXTAUTH_URL}/api/user/email/${session.user.email}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        );
 
-        if (dbUser) {
-          session.user.id = dbUser._id.toString();
-          session.user.email = dbUser.email;
-          session.user.name = dbUser.name;
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+
+        const user: IUser | null = (await res.json()) as IUser;
+
+        if (user) {
+          session.user.id = user._id.toString();
+          session.user.email = user.email;
+          session.user.name = user.name;
         }
       } catch (error) {
         console.error(error);
