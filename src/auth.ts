@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import User, { type IUser } from "~/models/user.model";
 import { authConfig } from "./auth.config";
-import dbConnect from "./utils/db/db";
 import {
   createUserFromGoogleAuth,
   getUserByEmail,

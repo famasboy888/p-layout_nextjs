@@ -1,5 +1,5 @@
 import { type Types } from "mongoose";
-import User, { type IUser } from "~/models/user.model";
+import User from "~/models/user.model";
 import dbConnect from "~/utils/db/db";
 
 export async function getUserById(userId: Types.ObjectId) {

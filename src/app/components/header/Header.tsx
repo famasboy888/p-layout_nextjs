@@ -1,9 +1,10 @@
-import { auth } from "~/auth";
 import Link from "next/link";
+import { auth } from "~/auth";
 import Sidebar from "./components/Sidebar";
 
 export default async function Header() {
   const session = await auth();
+
   return (
     <header>
       <nav>

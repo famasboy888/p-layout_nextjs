@@ -7,12 +7,16 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
   images: {
-    remotePatterns:[
+    remotePatterns: [
       {
         protocol: "https",
         hostname: "img.daisyui.com",
       },
-    ]
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+    ],
   },
 };
 

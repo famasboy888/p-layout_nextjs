@@ -1,7 +1,8 @@
-"use client";
+import { auth } from "~/auth";
 import SidebarMenu from "./SidebarMenu";
 
-export default function Sidebar() {
+export default async function Sidebar() {
+  await auth();
   return (
     <div className="drawer-start drawer">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
