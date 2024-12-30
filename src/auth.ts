@@ -42,8 +42,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           session.user.name = dbUser.name;
           session.user.role = dbUser.role;
         }
-
-        console.log("session from auth", session);
       } catch (error) {
         console.error(error);
       }

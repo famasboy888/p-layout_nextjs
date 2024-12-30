@@ -21,7 +21,6 @@ export const GET = async (
     // return only id, email, name and role
 
     const userDTO = UserDTO.parse(users);
-    console.log(users); // Log the userDTO for debugging
 
     return new NextResponse(JSON.stringify(userDTO), { status: 200 });
   } catch (error) {
