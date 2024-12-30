@@ -6,8 +6,8 @@ export const GET = async (
   req: NextRequest,
   context: { params: Promise<{ email: string }> },
 ) => {
-  const email = (await context.params).email;
   try {
+    const email = (await context.params).email;
     const users = await getUserByEmail(email);
 
     // Check if users is empty
@@ -26,7 +26,7 @@ export const GET = async (
     return new NextResponse(JSON.stringify(userDTO), { status: 200 });
   } catch (error) {
     console.error(error);
-    return new NextResponse(JSON.stringify({ error: "Failed to fetch user" }), {
+    return new NextResponse(JSON.stringify({ error: error }), {
       status: 500,
     });
   }

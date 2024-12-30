@@ -3,6 +3,10 @@ import Google from "next-auth/providers/google";
 import User, { type IUser } from "~/models/user.model";
 import { authConfig } from "./auth.config";
 import dbConnect from "./utils/db/db";
+import {
+  createUserFromGoogleAuth,
+  getUserByEmail,
+} from "./repositories/user.repo";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
@@ -11,17 +15,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user, account }) {
       if (account?.provider === "google") {
         try {
-          await dbConnect();
+          if (user?.email && user?.name) {
+            // Check if the user already exists
+            const existingUser = await getUserByEmail(user?.email);
 
-          // Check if the user already exists
-          const existingUser = await User.findOne({ email: user.email });
-
-          if (!existingUser) {
-            await User.create({
-              // If the user doesn't exist, create a new user
-              email: user.email,
-              name: user.name,
-            });
+            if (!existingUser) {
+              //If user doesnt exist create new user
+              await createUserFromGoogleAuth({
+                email: user.email,
+                name: user.name,
+              });
+            }
           }
         } catch (error) {
           console.error(error);
@@ -32,10 +36,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session }) {
       try {
-        await dbConnect();
-        const dbUser = await User.findOne({
-          email: session.user.email,
-        });
+        const dbUser = await getUserByEmail(session.user.email);
 
         if (dbUser) {
           session.user.id = dbUser._id.toString();

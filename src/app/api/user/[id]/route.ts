@@ -6,14 +6,21 @@ export const GET = async (
   req: NextRequest,
   context: { params: Promise<{ id: string }> },
 ) => {
-  const id = (await context.params).id;
-
   try {
+    const id = (await context.params).id;
     const users = await getUserById(new Types.ObjectId(id));
+
+    // Check if users is empty
+    if (!users) {
+      return new NextResponse(JSON.stringify({ error: "User not found" }), {
+        status: 404,
+      });
+    }
+
     return new NextResponse(JSON.stringify(users), { status: 200 });
   } catch (error) {
     console.error(error);
-    return new NextResponse(JSON.stringify({ error: "Failed to fetch user" }), {
+    return new NextResponse(JSON.stringify({ error: error }), {
       status: 500,
     });
   }
