@@ -11,7 +11,7 @@ export interface IUser extends Document {
   _id: Types.ObjectId;
   email: string;
   name: string;
-  role?: string;
+  role: string;
 }
 
 const UserSchema = new Schema(

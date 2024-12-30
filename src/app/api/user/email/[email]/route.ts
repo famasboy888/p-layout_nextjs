@@ -10,6 +10,13 @@ export const GET = async (
   try {
     const users = await getUserByEmail(email);
 
+    // Check if users is empty
+    if (!users) {
+      return new NextResponse(JSON.stringify({ error: "User not found" }), {
+        status: 404,
+      });
+    }
+
     // Implement DTO mapping using zod
     // return only id, email, name and role
 
