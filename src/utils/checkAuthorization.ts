@@ -19,8 +19,7 @@ export const checkAuthorizationProtectedRoute = async (
     redirect("/login");
   }
 
-  const user = await User.findOne({ email: session.user?.email });
-  if (!user || user.role !== requiredRole) {
+  if (session.user?.role !== requiredRole) {
     redirect("/unauthorized");
   }
 
