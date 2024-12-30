@@ -1,6 +1,9 @@
+import Image from "next/image";
+import { auth } from "~/auth";
 import GoogleSignOutButton from "./GoogleSignoutButton";
 
-export default function SidebarMenu() {
+export default async function SidebarMenu() {
+  const userSession = await auth();
   return (
     <div className="menu min-h-full w-80 bg-base-100 p-4 text-base-content">
       <div className="flex items-center space-x-4 pt-3">
@@ -10,15 +13,19 @@ export default function SidebarMenu() {
           className="avatar btn btn-circle btn-ghost"
         >
           <div className="w-10 rounded-full">
-            <img
+            <Image
               alt="User Avatar"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              src={userSession?.user.image ?? ""}
+              width={30}
+              height={30}
             />
           </div>
         </div>
         <div>
-          <div className="font-bold">John Doe</div>
-          <div className="text-xs text-gray-500">Coordinator</div>
+          <div className="font-bold capitalize">{userSession?.user.name}</div>
+          <div className="text-xs uppercase text-gray-500">
+            {userSession?.user.role}
+          </div>
         </div>
       </div>
       <div className="divider"></div>

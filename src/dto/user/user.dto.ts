@@ -6,4 +6,5 @@ export const UserDTO = z.object({
   _id: z.instanceof(Types.ObjectId),
   email: z.string().email(),
   name: z.string(),
+  role: z.string(),
 });

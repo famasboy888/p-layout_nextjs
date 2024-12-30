@@ -1,5 +1,5 @@
 import { type Types } from "mongoose";
-import User, { IUser } from "~/models/user.model";
+import User from "~/models/user.model";
 import dbConnect from "~/utils/db/db";
 
 export async function getUserById(userId: Types.ObjectId) {
@@ -26,7 +26,10 @@ export async function getUserByEmail(userEmail: string) {
   }
 }
 
-export async function createUserFromGoogleAuth(params: IUser) {
+export async function createUserFromGoogleAuth(params: {
+  email: string;
+  name: string;
+}) {
   try {
     await dbConnect();
     const user = await User.create(params);

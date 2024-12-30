@@ -1,6 +1,5 @@
-import { auth } from "~/auth";
 import { redirect } from "next/navigation";
-import User from "~/models/user.model";
+import { auth } from "~/auth";
 
 export const checkAuthorizationLoginRegisterRoute = async () => {
   const session = await auth();
