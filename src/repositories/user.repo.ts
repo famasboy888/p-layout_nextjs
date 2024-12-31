@@ -26,6 +26,20 @@ export async function getUserByEmail(userEmail: string) {
   }
 }
 
+export async function getUserRoleByEmail(userEmail: string) {
+  try {
+    await dbConnect();
+    const role = await User.findOne({
+      email: userEmail,
+    }).select("role -_id");
+
+    return role;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 export async function createUserFromGoogleAuth(params: {
   email: string;
   name: string;
