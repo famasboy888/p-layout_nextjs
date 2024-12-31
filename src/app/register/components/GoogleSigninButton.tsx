@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { handleGoogleSignIn } from "../controllers/registerController";
+import { handleGoogleSignIn } from "~/service/registerService";
 
 export default function GoogleSigninButton() {
   return (
