@@ -4,7 +4,6 @@ import Sidebar from "./components/Sidebar";
 
 export default async function Header() {
   const session = await auth();
-
   return (
     <header className="sticky top-0 z-50">
       <div className="navbar bg-base-100 px-8 shadow-md">
