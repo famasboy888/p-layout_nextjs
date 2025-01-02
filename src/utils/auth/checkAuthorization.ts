@@ -1,11 +1,5 @@
-import axios from "axios";
-import NextAuth from "next-auth";
 import { redirect } from "next/navigation";
-import { authConfig } from "~/auth.config";
-
-const BASE_URL = process.env.NEXTAUTH_URL;
-
-const { auth } = NextAuth(authConfig);
+import { auth } from "~/auth";
 
 export const checkAuthorizationLoginRegisterRoute = async () => {
   const session = await auth();
@@ -16,10 +10,6 @@ export const checkAuthorizationLoginRegisterRoute = async () => {
   return session;
 };
 
-interface IRole {
-  role: string;
-}
-
 export const checkAuthorizationProtectedRoute = async (
   requiredRole: string,
 ) => {
@@ -28,17 +18,7 @@ export const checkAuthorizationProtectedRoute = async (
     redirect("/login");
   }
 
-  try {
-    const res = await axios.get<IRole>(
-      `${BASE_URL}/api/auth/role/${session.user?.email}`,
-    );
-    const role = res.data.role;
-
-    if (requiredRole !== role) {
-      redirect("/unauthorized");
-    }
-  } catch (error) {
-    console.error(error);
+  if (requiredRole !== session.user.role) {
     redirect("/unauthorized");
   }
 

@@ -1,13 +1,28 @@
+import { Types } from "mongoose";
 import { NextResponse, type NextRequest } from "next/server";
 import { createEvent } from "~/repositories/event.repo";
 import { type IEvent } from "~/types/eventType";
 
 export const POST = async (
   req: NextRequest,
-  context: { params: Promise<Partial<IEvent>> },
+  context: { params: Promise<{ eventId: string }> },
 ) => {
   try {
-    const data = (await req.json()) as Partial<IEvent>;
+    // const data = (await req.json()) as Partial<IEvent>;
+
+    const data: Partial<IEvent> = {
+      createdBy: new Types.ObjectId("67758413e153bf5d1e1c0620"),
+      withPermission: [new Types.ObjectId("67758413e153bf5d1e1c0620")],
+      eventName: "C Eve",
+      eventDesc: "C This is a sample event description.",
+      eventType: "Conference B",
+      eventDate: new Date(),
+      eventCeremonyTime: "10:00 AM",
+      eventReceptionTime: "12:00 PM",
+      eventCeremonyLoc: "Conference Hall C",
+      eventReceptionLoc: "Conference Hall C",
+      eventStatus: "planning",
+    };
 
     console.log("data from API", data);
     const eventData: Partial<IEvent> = {
