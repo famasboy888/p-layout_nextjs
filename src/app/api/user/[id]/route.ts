@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 import { type NextRequest, NextResponse } from "next/server";
-import { UserDTO } from "~/dto/user/user.dto";
-import { getUserById } from "~/repositories/user.repo";
+import { UserDTO } from "~/features/user/dto/user.dto";
+import { getUserById } from "~/features/user/repositories/user.repo";
 
 export const GET = async (
   req: NextRequest,

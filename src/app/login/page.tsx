@@ -1,5 +1,5 @@
-import { checkAuthorizationLoginRegisterRoute } from "~/utils/auth/checkAuthorization";
-import GoogleSigninButton from "../register/components/GoogleSigninButton";
+import GoogleSigninButton from "~/components/ui/GoogleSigninButton";
+import { checkAuthorizationLoginRegisterRoute } from "~/lib/auth/checkAuthorization";
 export default async function page() {
   //Route protection
   await checkAuthorizationLoginRegisterRoute();

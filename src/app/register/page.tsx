@@ -1,5 +1,5 @@
-import { checkAuthorizationLoginRegisterRoute } from "~/utils/auth/checkAuthorization";
-import RegisterForm from "./components/RegisterForm";
+import { checkAuthorizationLoginRegisterRoute } from "~/lib/auth/checkAuthorization";
+import RegisterForm from "~/features/register/components/RegisterForm";
 
 export default async function RegisterPage() {
   //Route protection

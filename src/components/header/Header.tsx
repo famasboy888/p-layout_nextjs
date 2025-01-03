@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { auth } from "~/auth";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "~/components/header/Sidebar";
 
 export default async function Header() {
   const session = await auth();

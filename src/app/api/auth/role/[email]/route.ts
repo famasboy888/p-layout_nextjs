@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { getUserRoleByEmail } from "~/repositories/user.repo";
+import { getUserRoleByEmail } from "~/features/user/repositories/user.repo";
 
 export const GET = async (
   req: NextRequest,

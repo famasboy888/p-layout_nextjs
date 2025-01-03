@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { auth } from "~/auth";
-import GoogleSignOutButton from "./GoogleSignoutButton";
+import GoogleSignOutButton from "~/components/ui/GoogleSignoutButton";
 
 export default async function SidebarMenu() {
   const userSession = await auth();

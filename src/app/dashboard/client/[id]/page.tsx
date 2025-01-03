@@ -1,4 +1,4 @@
-import { checkAuthorizationProtectedRoute } from "~/utils/auth/checkAuthorization";
+import { checkAuthorizationProtectedRoute } from "~/lib/auth/checkAuthorization";
 
 export default async function page() {
   //Route protection

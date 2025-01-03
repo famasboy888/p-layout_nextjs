@@ -1,6 +1,6 @@
 import { type Types } from "mongoose";
-import User from "~/models/user.model";
-import dbConnect from "~/utils/db/db";
+import User from "~/features/user/models/user.model";
+import dbConnect from "~/lib/db/db";
 
 export async function getUserById(userId: Types.ObjectId) {
   try {

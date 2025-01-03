@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { fetchEventOfUser } from "~/service/event/eventService";
-import { type IEvent } from "~/types/eventType";
-import CoordinatorDashboardCard from "./components/CoordinatorDashboardCard";
+import { fetchEventOfUser } from "~/features/event/actions/eventAction";
+import CoordinatorDashboardCard from "~/features/dashboard/coordinator/components/CoordinatorDashboardCard";
+import { IEvent } from "~/features/event/types/eventType";
 
 export default async function page() {
   const events: Promise<Partial<IEvent>[]> = fetchEventOfUser();

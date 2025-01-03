@@ -1,7 +1,7 @@
 import { type Types } from "mongoose";
-import Event from "~/models/event.model";
-import { type IEvent } from "~/types/eventType";
-import dbConnect from "~/utils/db/db";
+import Event from "~/features/event/models/event.model";
+import dbConnect from "~/lib/db/db";
+import { type IEvent } from "../types/eventType";
 
 export async function createEvent(params: Partial<IEvent>) {
   try {
