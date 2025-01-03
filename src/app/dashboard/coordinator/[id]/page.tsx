@@ -1,16 +1,21 @@
 import { Suspense } from "react";
-import { fetchEventOfUser } from "~/features/event/actions/eventAction";
+import AddEventDrawer from "~/features/dashboard/coordinator/components/AddEventDrawer";
 import CoordinatorDashboardCard from "~/features/dashboard/coordinator/components/CoordinatorDashboardCard";
-import { IEvent } from "~/features/event/types/eventType";
+import {
+  fetchEventOfUser
+} from "~/features/event/actions/eventAction";
 
 export default async function page() {
-  const events: Promise<Partial<IEvent>[]> = fetchEventOfUser();
+  const events = await fetchEventOfUser();
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="mb-8 mt-4 text-2xl font-bold">Recent Events</h1>
-      <Suspense fallback={<div>Loading...</div>}>
-        <CoordinatorDashboardCard eventData={events} />
-      </Suspense>
-    </div>
+    <>
+      <div className="container mx-auto p-4">
+        <h1 className="mb-8 mt-4 text-2xl font-bold">Recent Events</h1>
+        <Suspense fallback={<div>Loading...</div>}>
+          <CoordinatorDashboardCard eventData={events} />
+        </Suspense>
+      </div>
+      <AddEventDrawer />
+    </>
   );
 }

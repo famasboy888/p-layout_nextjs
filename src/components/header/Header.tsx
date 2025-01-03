@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "~/auth";
 import Sidebar from "~/components/header/Sidebar";
+import { AuthProvider } from "~/context/AuthProvider";
 
 export default async function Header() {
   const session = await auth();
@@ -31,7 +32,9 @@ export default async function Header() {
         ) : (
           <>
             <div className="navbar-start">
-              <Sidebar />
+              <AuthProvider>
+                <Sidebar />
+              </AuthProvider>
             </div>
             <div className="navbar-center">
               <Link href="/" className="bg-base-100 text-xl">
