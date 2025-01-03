@@ -1,23 +1,22 @@
-import { cookies } from "next/headers";
+import { Types } from "mongoose";
 import { checkAuthorizationProtectedRoute } from "~/lib/auth/checkAuthorization";
-import { BASE_URL } from "~/lib/constants";
-import { type IEvent } from "../types/eventType";
+import { EventArraySchema } from "../dto/event.dto";
+import { getAllEventsByUserId } from "../repositories/event.repo";
+import { type EventDisplayDTO } from "../types/eventType";
 
 export const fetchEventOfUser = async () => {
   try {
     const session = await checkAuthorizationProtectedRoute("coordinator");
 
-    const res = await fetch(`${BASE_URL}/api/event/user/${session.user.id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: (await cookies()).toString(),
-      },
-    });
+    const userId = new Types.ObjectId(session.user.id);
 
-    const events: Partial<IEvent>[] = (await res.json()) as Partial<IEvent>[];
+    const events = await getAllEventsByUserId(userId);
 
-    return events;
+    const mappedEventData = EventArraySchema.parse(
+      events,
+    ) as Partial<EventDisplayDTO>[];
+
+    return mappedEventData;
   } catch (error) {
     console.error(error);
     throw error;

@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { use } from "react";
-import { type IEvent } from "~/features/event/types/eventType";
+import { type EventDisplayDTO } from "~/features/event/types/eventType";
 
 export default function CoordinatorDashboardCard({
   eventData,
 }: {
-  readonly eventData: Promise<Partial<IEvent>[]>;
+  readonly eventData: Promise<Partial<EventDisplayDTO>[]>;
 }) {
   const events = use(eventData);
   return (
@@ -20,7 +20,10 @@ export default function CoordinatorDashboardCard({
           >
             <figure>
               <Image
-                alt={event.eventName!}
+                alt={
+                  event.eventName ??
+                  "https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
+                }
                 src={`https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp`}
                 className="rounded-box"
                 width={500}
