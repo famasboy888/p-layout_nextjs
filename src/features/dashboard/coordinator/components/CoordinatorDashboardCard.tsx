@@ -1,19 +1,15 @@
-"use client";
-
 import Image from "next/image";
-import { use } from "react";
 import { type EventDisplayDTO } from "~/features/event/types/eventType";
 
 export default function CoordinatorDashboardCard({
   eventData,
 }: {
-  readonly eventData: Promise<Partial<EventDisplayDTO>[]>;
+  readonly eventData: Partial<EventDisplayDTO>[];
 }) {
-  const events = use(eventData);
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      {events.length > 0 ? (
-        events.map((event) => (
+      {eventData.length > 0 ? (
+        eventData.map((event) => (
           <div
             key={event._id?.toString()}
             className="card h-40 w-auto bg-base-100 shadow-md md:h-64"

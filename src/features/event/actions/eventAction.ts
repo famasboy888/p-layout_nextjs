@@ -1,3 +1,4 @@
+"use server";
 import { Types } from "mongoose";
 import { checkAuthorizationProtectedRoute } from "~/lib/auth/checkAuthorization";
 import { EventArraySchema } from "../dto/event.dto";
@@ -20,5 +21,28 @@ export const fetchEventOfUser = async () => {
   } catch (error) {
     console.error(error);
     throw error;
+  }
+};
+
+function simulateApiCall(): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("API call completed");
+    }, 5000); // 20 seconds delay
+  });
+}
+
+export const addEvent = async (prevState: unknown, formData: FormData) => {
+
+  try {
+    const result = await simulateApiCall();
+    return {
+      message: "Success",
+    };
+  } catch (error) {
+    console.error("Error during API call:", error);
+    return {
+      message: "Failed",
+    };
   }
 };
