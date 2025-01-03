@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { NextResponse, type NextRequest } from "next/server";
-import { createEvent } from "~/repositories/event.repo";
+import { createEvent } from "~/features/event/repositories/event.repo";
 import { type IEvent } from "~/types/eventType";
 
 export const POST = async (

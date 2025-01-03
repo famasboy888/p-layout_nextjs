@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { UserDTO } from "~/dto/user/user.dto";
-import { getUserByEmail } from "~/repositories/user.repo";
+import { UserDTO } from "~/features/user/dto/user.dto";
+import { getUserByEmail } from "~/features/user/repositories/user.repo";
 
 export const GET = async (
   req: NextRequest,

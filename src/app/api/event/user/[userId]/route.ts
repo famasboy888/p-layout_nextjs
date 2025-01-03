@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { NextResponse, type NextRequest } from "next/server";
-import { getAllEventsByUserId } from "~/repositories/event.repo";
+import { getAllEventsByUserId } from "~/features/event/repositories/event.repo";
 
 export const GET = async (
   req: NextRequest,

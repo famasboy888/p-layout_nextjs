@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
-import { type IEvent } from "~/types/eventType";
-import { checkAuthorizationProtectedRoute } from "~/utils/auth/checkAuthorization";
-import { BASE_URL } from "~/utils/constants";
+import { checkAuthorizationProtectedRoute } from "~/lib/auth/checkAuthorization";
+import { BASE_URL } from "~/lib/constants";
+import { type IEvent } from "../types/eventType";
 
 export const fetchEventOfUser = async () => {
   try {

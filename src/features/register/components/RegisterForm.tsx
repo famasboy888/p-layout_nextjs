@@ -1,4 +1,4 @@
-import GoogleSigninButton from "./GoogleSigninButton";
+import GoogleSigninButton from "~/components/ui/GoogleSigninButton";
 
 export default function RegisterForm() {
   return (

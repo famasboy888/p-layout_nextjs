@@ -1,6 +1,6 @@
 "use client";
 
-import { handleGoogleSignOut } from "~/service/registerService";
+import { handleGoogleSignOut } from "~/actions/registerAction";
 
 export default function GoogleSignOutButton() {
   return (

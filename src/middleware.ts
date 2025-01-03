@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import { type NextRequest, NextResponse } from "next/server";
-import { authConfig } from "./auth.config";
-import { PUBLIC_ROUTES, ROOT } from "./middleware/route.middleware";
+import { authConfig } from "~/lib/auth.config";
+import { PUBLIC_ROUTES, ROOT } from "./lib/middleware/route.middleware";
 const { auth } = NextAuth(authConfig);
 
 export async function middleware(req: NextRequest) {

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { use } from "react";
-import { type IEvent } from "~/types/eventType";
+import { type IEvent } from "~/features/event/types/eventType";
 
 export default function CoordinatorDashboardCard({
   eventData,
